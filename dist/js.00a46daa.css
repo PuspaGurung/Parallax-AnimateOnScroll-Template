@@ -1,2 +1,62 @@
+/* 0 - 600px: phone,
+600 - 900px> tablet portranit,
+900 - 1200px: tablet landscape,
+1200px > > : large screen width
+*/
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+@media (min-width: 80em) {
+  html {
+    font-size: 62.5%;
+  }
+}
+@media (max-width: 80em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media (max-width: 65em) {
+  html {
+    font-size: 46.88%;
+  }
+}
+@media (max-width: 49em) {
+  html {
+    font-size: 43.75%;
+  }
+}
+@media (max-width: 37.5em) {
+  html {
+    font-size: 40%;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  line-height: inherit;
+}
+
+img {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  overflow: hidden;
+}
 
 /*# sourceMappingURL=/js.00a46daa.css.map */

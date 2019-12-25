@@ -1,0 +1,50 @@
+// MEDIA QUERY
+// == BREAK POINT ==
+
+/* 0 - 600px: phone,
+600 - 900px> tablet portranit,
+900 - 1200px: tablet landscape,
+1200px > > : large screen width
+*/
+
+@mixin respond-mediaQuery($breakpoint) {
+  @if $breakpoint==phone {
+    @media (max-width: 37.5em) {
+      @content;
+    }
+
+    // width <= 600px
+  }
+
+  @if $breakpoint==ipad {
+    @media (max-width: 49em) {
+      @content;
+    }
+
+    // width <= 769px
+  }
+
+  @if $breakpoint==ipad-pro {
+    @media (max-width: 65em) {
+      @content;
+    }
+
+    // width <= 1040px;
+  }
+
+  @if $breakpoint==laptop {
+    @media (max-width: 80em) {
+      @content;
+    }
+
+    // width <= 1280px
+  }
+
+  @if $breakpoint==big-screen {
+    @media (min-width: 80em) {
+      @content;
+    }
+
+    //  width > 1280px)
+  }
+}
