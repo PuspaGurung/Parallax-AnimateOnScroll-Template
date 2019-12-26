@@ -1,0 +1,29 @@
+#clients {
+  border-bottom: 1px solid $color-grey;
+
+  .client--wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+
+    a.client {
+      display: flex;
+      @include box-shadow--primary;
+      @include transition-delay-sm;
+      background-color: $color-white-primary;
+      width: 20rem;
+      height: 11rem;
+      margin: 1rem;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 4rem;
+      cursor: no-drop;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

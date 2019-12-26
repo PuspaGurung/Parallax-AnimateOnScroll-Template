@@ -117,7 +117,101 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+})({"../node_modules/countup.js/dist/countUp.min.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CountUp = void 0;
+
+var __assign = void 0 && (void 0).__assign || function () {
+  return (__assign = Object.assign || function (t) {
+    for (var i, a = 1, s = arguments.length; a < s; a++) for (var n in i = arguments[a]) Object.prototype.hasOwnProperty.call(i, n) && (t[n] = i[n]);
+
+    return t;
+  }).apply(this, arguments);
+},
+    CountUp = function () {
+  function t(t, i, a) {
+    var s = this;
+    this.target = t, this.endVal = i, this.options = a, this.version = "2.0.4", this.defaults = {
+      startVal: 0,
+      decimalPlaces: 0,
+      duration: 2,
+      useEasing: !0,
+      useGrouping: !0,
+      smartEasingThreshold: 999,
+      smartEasingAmount: 333,
+      separator: ",",
+      decimal: ".",
+      prefix: "",
+      suffix: ""
+    }, this.finalEndVal = null, this.useEasing = !0, this.countDown = !1, this.error = "", this.startVal = 0, this.paused = !0, this.count = function (t) {
+      s.startTime || (s.startTime = t);
+      var i = t - s.startTime;
+      s.remaining = s.duration - i, s.useEasing ? s.countDown ? s.frameVal = s.startVal - s.easingFn(i, 0, s.startVal - s.endVal, s.duration) : s.frameVal = s.easingFn(i, s.startVal, s.endVal - s.startVal, s.duration) : s.countDown ? s.frameVal = s.startVal - (s.startVal - s.endVal) * (i / s.duration) : s.frameVal = s.startVal + (s.endVal - s.startVal) * (i / s.duration), s.countDown ? s.frameVal = s.frameVal < s.endVal ? s.endVal : s.frameVal : s.frameVal = s.frameVal > s.endVal ? s.endVal : s.frameVal, s.frameVal = Math.round(s.frameVal * s.decimalMult) / s.decimalMult, s.printValue(s.frameVal), i < s.duration ? s.rAF = requestAnimationFrame(s.count) : null !== s.finalEndVal ? s.update(s.finalEndVal) : s.callback && s.callback();
+    }, this.formatNumber = function (t) {
+      var i,
+          a,
+          n,
+          e,
+          r,
+          o = t < 0 ? "-" : "";
+
+      if (i = Math.abs(t).toFixed(s.options.decimalPlaces), n = (a = (i += "").split("."))[0], e = a.length > 1 ? s.options.decimal + a[1] : "", s.options.useGrouping) {
+        r = "";
+
+        for (var l = 0, h = n.length; l < h; ++l) 0 !== l && l % 3 == 0 && (r = s.options.separator + r), r = n[h - l - 1] + r;
+
+        n = r;
+      }
+
+      return s.options.numerals && s.options.numerals.length && (n = n.replace(/[0-9]/g, function (t) {
+        return s.options.numerals[+t];
+      }), e = e.replace(/[0-9]/g, function (t) {
+        return s.options.numerals[+t];
+      })), o + s.options.prefix + n + e + s.options.suffix;
+    }, this.easeOutExpo = function (t, i, a, s) {
+      return a * (1 - Math.pow(2, -10 * t / s)) * 1024 / 1023 + i;
+    }, this.options = __assign({}, this.defaults, a), this.formattingFn = this.options.formattingFn ? this.options.formattingFn : this.formatNumber, this.easingFn = this.options.easingFn ? this.options.easingFn : this.easeOutExpo, this.startVal = this.validateValue(this.options.startVal), this.frameVal = this.startVal, this.endVal = this.validateValue(i), this.options.decimalPlaces = Math.max(this.options.decimalPlaces), this.decimalMult = Math.pow(10, this.options.decimalPlaces), this.resetDuration(), this.options.separator = String(this.options.separator), this.useEasing = this.options.useEasing, "" === this.options.separator && (this.options.useGrouping = !1), this.el = "string" == typeof t ? document.getElementById(t) : t, this.el ? this.printValue(this.startVal) : this.error = "[CountUp] target is null or undefined";
+  }
+
+  return t.prototype.determineDirectionAndSmartEasing = function () {
+    var t = this.finalEndVal ? this.finalEndVal : this.endVal;
+    this.countDown = this.startVal > t;
+    var i = t - this.startVal;
+
+    if (Math.abs(i) > this.options.smartEasingThreshold) {
+      this.finalEndVal = t;
+      var a = this.countDown ? 1 : -1;
+      this.endVal = t + a * this.options.smartEasingAmount, this.duration = this.duration / 2;
+    } else this.endVal = t, this.finalEndVal = null;
+
+    this.finalEndVal ? this.useEasing = !1 : this.useEasing = this.options.useEasing;
+  }, t.prototype.start = function (t) {
+    this.error || (this.callback = t, this.duration > 0 ? (this.determineDirectionAndSmartEasing(), this.paused = !1, this.rAF = requestAnimationFrame(this.count)) : this.printValue(this.endVal));
+  }, t.prototype.pauseResume = function () {
+    this.paused ? (this.startTime = null, this.duration = this.remaining, this.startVal = this.frameVal, this.determineDirectionAndSmartEasing(), this.rAF = requestAnimationFrame(this.count)) : cancelAnimationFrame(this.rAF), this.paused = !this.paused;
+  }, t.prototype.reset = function () {
+    cancelAnimationFrame(this.rAF), this.paused = !0, this.resetDuration(), this.startVal = this.validateValue(this.options.startVal), this.frameVal = this.startVal, this.printValue(this.startVal);
+  }, t.prototype.update = function (t) {
+    cancelAnimationFrame(this.rAF), this.startTime = null, this.endVal = this.validateValue(t), this.endVal !== this.frameVal && (this.startVal = this.frameVal, this.finalEndVal || this.resetDuration(), this.determineDirectionAndSmartEasing(), this.rAF = requestAnimationFrame(this.count));
+  }, t.prototype.printValue = function (t) {
+    var i = this.formattingFn(t);
+    "INPUT" === this.el.tagName ? this.el.value = i : "text" === this.el.tagName || "tspan" === this.el.tagName ? this.el.textContent = i : this.el.innerHTML = i;
+  }, t.prototype.ensureNumber = function (t) {
+    return "number" == typeof t && !isNaN(t);
+  }, t.prototype.validateValue = function (t) {
+    var i = Number(t);
+    return this.ensureNumber(i) ? i : (this.error = "[CountUp] invalid start or end value: " + t, null);
+  }, t.prototype.resetDuration = function () {
+    this.startTime = null, this.duration = 1e3 * Number(this.options.duration), this.remaining = this.duration;
+  }, t;
+}();
+
+exports.CountUp = CountUp;
+},{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -192,26 +286,27 @@ module.hot.accept(reloadCSS);
 },{"./..\\img\\banner\\banner1.jpg":[["banner1.e4462969.jpg","img/banner/banner1.jpg"],"img/banner/banner1.jpg"],"./..\\img\\service-bg.jpg":[["service-bg.9bf543dc.jpg","img/service-bg.jpg"],"img/service-bg.jpg"],"./..\\img\\case.jpg":[["case.65512320.jpg","img/case.jpg"],"img/case.jpg"],"./..\\img\\team\\bg-team.jpg":[["bg-team.c004f2f3.jpg","img/team/bg-team.jpg"],"img/team/bg-team.jpg"],"./..\\img\\status.jpg":[["status.28a00101.jpg","img/status.jpg"],"img/status.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
+var _countup = require("countup.js");
+
 require("./../scss/main.scss");
 
-// IMPORT SCSS
-// FILTER WORK SELECTION
+////////////////// RECENT-WORK FILTER NAVIGATION  /////////////////
 //default
 filterWorkSelection("all");
-var getWorkFilterBtn = document.querySelectorAll(".work-filter-nav__item button");
+var getFilterNavigations = document.querySelectorAll(".work-filter-nav__item button");
 
 var _loop = function _loop(i) {
-  getWorkFilterBtn[i].addEventListener("click", function () {
+  getFilterNavigations[i].addEventListener("click", function () {
     // Apply work-group name to filterWorkSelection() function when click on individual filter navigation button
-    filterWorkSelection(getWorkFilterBtn[i].name); // Add btn-active class to the current contrl button
+    filterWorkSelection(getFilterNavigations[i].name); // Add btn-active class to the current contrl button
 
     var getActiveBtn = document.querySelectorAll(".work-filter-nav__item .btn-active");
     getActiveBtn.length > 0 ? getActiveBtn[0].className = getActiveBtn[0].className.replace("btn-active", "") : "";
-    getWorkFilterBtn[i].classList.add("btn-active");
+    getFilterNavigations[i].classList.add("btn-active");
   });
 };
 
-for (var i = 0; i < getWorkFilterBtn.length; i++) {
+for (var i = 0; i < getFilterNavigations.length; i++) {
   _loop(i);
 }
 
@@ -253,7 +348,7 @@ function hideWorkGroup(workGalleryItem, newClass) {
   }
 
   workGalleryItem.className = arr1.join(" ");
-} //GALLERY POPUP BOX:: Display individual selected(clicked) gallery item
+} /////////////// GALLERY POPUP BOX:: Display individual selected(clicked) gallery item//////////////
 
 
 var getVisibleWorkGallery = document.querySelectorAll(".recent-work--gallery .work-visible");
@@ -287,8 +382,44 @@ for (var _i2 = 0; _i2 < getVisibleWorkGallery.length; _i2++) {
   _loop2(_i2);
 }
 
-;
-},{"./../scss/main.scss":"scss/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+; ////////////////// STATUS:: CountUp status number Animation ////////////////////
+
+var createInterval = setInterval(function () {
+  var targetElement = document.querySelectorAll(".status-box .status-box__count"); // The status number to display
+
+  var statusNumber = [5235, 25987, 895, 487, 3658];
+
+  for (var _i3 = 0; _i3 < targetElement.length; _i3++) {
+    var countUp = new _countup.CountUp(targetElement[_i3], statusNumber[_i3]);
+    countUp.start();
+  } // Stop interval after mouse scrolled to target element (or #status section in this case)
+
+
+  targetElement.length > 0 ? clearInterval(createInterval) : "";
+}, 10); ///////////////////// TEAM SECTION:: CONTROL DISPLAY TEAM LIST ////////////////////////
+
+var allTeams = document.querySelectorAll(".team");
+var getTeamCtrolBtm = document.querySelector(".link-other-team");
+var incrementBy = 0;
+getTeamCtrolBtm.addEventListener("click", function () {
+  incrementBy += 4;
+  contrlDisplayTeam(incrementBy);
+});
+
+function contrlDisplayTeam(incrementBy) {
+  var defaultTeamLength = 4;
+  var teamLength = defaultTeamLength + incrementBy > allTeams.length ? allTeams.length : incrementBy ? defaultTeamLength + incrementBy : defaultTeamLength; // hide 'OTHER TEAM MEMBER' button if all teams are display
+
+  teamLength == allTeams.length ? getTeamCtrolBtm.style.display = "none" : "";
+
+  for (var _i4 = 0; _i4 < teamLength; _i4++) {
+    // add class team-visible ( for display:flex;)
+    allTeams[_i4].classList.add("team-visible");
+  }
+}
+
+contrlDisplayTeam();
+},{"countup.js":"../node_modules/countup.js/dist/countUp.min.js","./../scss/main.scss":"scss/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

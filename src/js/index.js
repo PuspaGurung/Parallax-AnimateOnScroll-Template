@@ -1,28 +1,24 @@
-// IMPORT SCSS
+import {
+  CountUp
+} from "countup.js";
 import "./../scss/main.scss";
 
-// FILTER WORK SELECTION
+////////////////// RECENT-WORK FILTER NAVIGATION  /////////////////
 //default
 filterWorkSelection("all");
-let getWorkFilterBtn = document.querySelectorAll(
+let getFilterNavigations = document.querySelectorAll(
   ".work-filter-nav__item button"
 );
-for (let i = 0; i < getWorkFilterBtn.length; i++) {
-  getWorkFilterBtn[i].addEventListener("click", () => {
+for (let i = 0; i < getFilterNavigations.length; i++) {
+  getFilterNavigations[i].addEventListener("click", () => {
     // Apply work-group name to filterWorkSelection() function when click on individual filter navigation button
-    filterWorkSelection(getWorkFilterBtn[i].name);
+    filterWorkSelection(getFilterNavigations[i].name);
 
     // Add btn-active class to the current contrl button
-    let getActiveBtn = document.querySelectorAll(
-      ".work-filter-nav__item .btn-active"
-    );
+    let getActiveBtn = document.querySelectorAll(".work-filter-nav__item .btn-active");
     getActiveBtn.length > 0 ?
-      (getActiveBtn[0].className = getActiveBtn[0].className.replace(
-        "btn-active",
-        ""
-      )) :
-      "";
-    getWorkFilterBtn[i].classList.add("btn-active");
+      (getActiveBtn[0].className = getActiveBtn[0].className.replace("btn-active", "")) : "";
+    getFilterNavigations[i].classList.add("btn-active");
   });
 }
 
@@ -30,7 +26,6 @@ function filterWorkSelection(workGroup) {
   let workGalleryItems = document.querySelectorAll(".gallery-itme");
   let newClassName = "work-visible";
   if (workGroup == "all") workGroup = "";
-
   for (let i = 0; i < workGalleryItems.length; i++) {
     hideWorkGroup(workGalleryItems[i], newClassName);
     workGalleryItems[i].className.indexOf(workGroup) > -1 ?
@@ -64,7 +59,8 @@ function hideWorkGroup(workGalleryItem, newClass) {
   workGalleryItem.className = arr1.join(" ");
 }
 
-//GALLERY POPUP BOX:: Display individual selected(clicked) gallery item
+
+/////////////// GALLERY POPUP BOX:: Display individual selected(clicked) gallery item//////////////
 let getVisibleWorkGallery = document.querySelectorAll(
   ".recent-work--gallery .work-visible"
 );
@@ -73,7 +69,6 @@ for (let i = 0; i < getVisibleWorkGallery.length; i++) {
     let getPopupContainer = document.getElementById("selected-work-popup-box");
     // add visible-popup-box class (for display:block;); initially the box would be display:none;
     getPopupContainer.classList.add("visible-popup-box");
-
     //close the popupBox when click on close icon
     setTimeout(() => {
       let getClosePopupBox = document.querySelector(".close-popup-box");
@@ -101,3 +96,46 @@ for (let i = 0; i < getVisibleWorkGallery.length; i++) {
     getPopupContainer.innerHTML = galleryItemDetail;
   });
 };
+
+
+////////////////// STATUS:: CountUp status number Animation ////////////////////
+let createInterval = setInterval(() => {
+  let targetElement = document.querySelectorAll(
+    ".status-box .status-box__count"
+  );
+  // The status number to display
+  let statusNumber = [5235, 25987, 895, 487, 3658];
+  for (let i = 0; i < targetElement.length; i++) {
+    const countUp = new CountUp(targetElement[i], statusNumber[i]);
+    countUp.start();
+  }
+  // Stop interval after mouse scrolled to target element (or #status section in this case)
+  targetElement.length > 0 ? clearInterval(createInterval) : "";
+}, 10);
+
+
+///////////////////// TEAM SECTION:: CONTROL DISPLAY TEAM LIST ////////////////////////
+let allTeams = document.querySelectorAll(".team");
+let getTeamCtrolBtm = document.querySelector(".link-other-team");
+let incrementBy = 0;
+getTeamCtrolBtm.addEventListener("click", () => {
+  incrementBy += 4;
+  contrlDisplayTeam(incrementBy);
+});
+
+function contrlDisplayTeam(incrementBy) {
+  let defaultTeamLength = 4;
+  let teamLength =
+    defaultTeamLength + incrementBy > allTeams.length ?
+    allTeams.length :
+    incrementBy ?
+    defaultTeamLength + incrementBy :
+    defaultTeamLength;
+  // hide 'OTHER TEAM MEMBER' button if all teams are display
+  teamLength == allTeams.length ? (getTeamCtrolBtm.style.display = "none") : "";
+  for (let i = 0; i < teamLength; i++) {
+    // add class team-visible ( for display:flex;)
+    allTeams[i].classList.add("team-visible");
+  }
+}
+contrlDisplayTeam();
