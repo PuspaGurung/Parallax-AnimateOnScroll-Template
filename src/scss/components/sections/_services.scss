@@ -1,0 +1,90 @@
+#services {
+  background-image: linear-gradient(90deg, rgba($color-black-primary, 0.9) 0%, rgba($color-black-primary, 0.9) 50%, transparent 50%), url(../img/service-bg.jpg);
+  background-size: cover;
+  background-position: center right;
+  min-height: 50rem;
+  width: 100%;
+  background-attachment: fixed;
+
+  .services-container {
+    width: 50%;
+    text-align: right;
+
+    .heading-secondary {
+      color: $color-white-primary;
+      margin: 6rem 7rem 7rem 0;
+    }
+
+    .service-box {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 6rem;
+
+      &__text {
+        margin-right: 4rem;
+        text-align: right;
+        width: 70%;
+
+        .service-title {
+          color: $color-primary;
+          margin-bottom: 1rem;
+
+        }
+
+        .service-details {
+          color: $color-secondary-light;
+          line-height: 2.5rem;
+          @include transition-delay-md;
+        }
+      }
+
+      &__logo {
+
+        background-color: $color-white-primary;
+        position: relative;
+        @include border-radius-50percent;
+        height: 6rem;
+        width: 6rem;
+        z-index: 10;
+        margin-right: -3rem;
+
+        &::after {
+          background-color: $color-white-primary;
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          @include border-radius-50percent;
+          @include transform-scale-lg;
+          @include transition-delay-md;
+          opacity: 0.5;
+        }
+
+        .fa {
+          font-size: 2.5rem;
+          color: $color-primary;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          @include transform-xy-minus50percent;
+          z-index: 5;
+        }
+      }
+
+      &:hover {
+        .service-details {
+          color: $color-white-secondary;
+        }
+
+        .service-box__logo::after {
+          @include transform-scale-xlg;
+          opacity: 0;
+        }
+      }
+    }
+  }
+}

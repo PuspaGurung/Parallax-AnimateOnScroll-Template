@@ -189,10 +189,105 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\img\\banner\\banner1.jpg":[["banner1.e4462969.jpg","img/banner/banner1.jpg"],"img/banner/banner1.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/index.js":[function(require,module,exports) {
+},{"./..\\img\\banner\\banner1.jpg":[["banner1.e4462969.jpg","img/banner/banner1.jpg"],"img/banner/banner1.jpg"],"./..\\img\\service-bg.jpg":[["service-bg.9bf543dc.jpg","img/service-bg.jpg"],"img/service-bg.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 require("./../scss/main.scss");
+
+// IMPORT SCSS
+// FILTER WORK SELECTION
+//default
+filterWorkSelection("all");
+var getWorkFilterBtn = document.querySelectorAll(".work-filter-nav__item button");
+
+var _loop = function _loop(i) {
+  getWorkFilterBtn[i].addEventListener("click", function () {
+    // Apply work-group name to filterWorkSelection() function when click on individual filter navigation button
+    filterWorkSelection(getWorkFilterBtn[i].name); // Add btn-active class to the current contrl button
+
+    var getActiveBtn = document.querySelectorAll(".work-filter-nav__item .btn-active");
+    getActiveBtn.length > 0 ? getActiveBtn[0].className = getActiveBtn[0].className.replace("btn-active", "") : "";
+    getWorkFilterBtn[i].classList.add("btn-active");
+  });
+};
+
+for (var i = 0; i < getWorkFilterBtn.length; i++) {
+  _loop(i);
+}
+
+function filterWorkSelection(workGroup) {
+  var workGalleryItems = document.querySelectorAll(".gallery-itme");
+  var newClassName = "work-visible";
+  if (workGroup == "all") workGroup = "";
+
+  for (var _i = 0; _i < workGalleryItems.length; _i++) {
+    hideWorkGroup(workGalleryItems[_i], newClassName);
+    workGalleryItems[_i].className.indexOf(workGroup) > -1 ? showWorkGroup(workGalleryItems[_i], newClassName) : "";
+  }
+} // Show filter work-group
+
+
+function showWorkGroup(workGalleryItem, newClass) {
+  //console.log(name)
+  var i, arr1, arr2;
+  arr1 = workGalleryItem.className.split(" ");
+  arr2 = newClass.split(" "); // console.log(arr1)
+
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      workGalleryItem.classList.add(arr2[i]);
+    }
+  }
+} // Hide work-group that are not selected
+
+
+function hideWorkGroup(workGalleryItem, newClass) {
+  var i, arr1, arr2;
+  arr1 = workGalleryItem.className.split(" ");
+  arr2 = newClass.split(" ");
+
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+
+  workGalleryItem.className = arr1.join(" ");
+} //GALLERY POPUP BOX:: Display individual selected(clicked) gallery item
+
+
+var getVisibleWorkGallery = document.querySelectorAll(".recent-work--gallery .work-visible");
+
+var _loop2 = function _loop2(_i2) {
+  getVisibleWorkGallery[_i2].addEventListener("click", function () {
+    var getPopupContainer = document.getElementById("selected-work-popup-box"); // add visible-popup-box class (for display:block;); initially the box would be display:none;
+
+    getPopupContainer.classList.add("visible-popup-box"); //close the popupBox when click on close icon
+
+    setTimeout(function () {
+      var getClosePopupBox = document.querySelector(".close-popup-box");
+      getClosePopupBox.addEventListener("click", function () {
+        getPopupContainer.className = getPopupContainer.className.replace("visible-popup-box", "");
+      });
+    }, 1000);
+
+    var image = getVisibleWorkGallery[_i2].getElementsByTagName("img");
+
+    var getImgPath = image[0].src;
+    var getPara = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet est dignissim, pellentesque nulla ac, lacinia tellus. Sed eget metus interdum, ultrices mauris ac, dictum nibh. Proin vel interdum nisi, convallis mollis dui. Vivamus vestibulum lectus id nisi accumsan, at rutrum lectus lobortis. Mauris maximus odio elit.";
+
+    var getTitle = getVisibleWorkGallery[_i2].getElementsByClassName("overlay-info--title")[0].innerText;
+
+    var galleryItemDetail = "<div class=\"selected-work\">\n    <i class=\"close-popup-box fa fa-window-close\"></i>\n            <div class=\"selected-work__title\">".concat(getTitle, "</div>\n            <div class=\"selected-work__para\">").concat(getPara, "</div>\n            <div class=\"selected-work__image\"><img src=").concat(getImgPath, " alt=\"").concat(getTitle, "\"></div>\n        </div>");
+    getPopupContainer.innerHTML = galleryItemDetail;
+  });
+};
+
+for (var _i2 = 0; _i2 < getVisibleWorkGallery.length; _i2++) {
+  _loop2(_i2);
+}
+
+;
 },{"./../scss/main.scss":"scss/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -221,7 +316,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62096" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62832" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
