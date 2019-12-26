@@ -1,2 +1,8 @@
 @import './components/mixin';
-@import './components/base'
+@import './components/variables';
+@import './components/base';
+@import './components/utilities';
+@import './components/sections/header';
+@import './components/sections/banner';
+@import './components/sections/features';
+@import './components/sections/about';

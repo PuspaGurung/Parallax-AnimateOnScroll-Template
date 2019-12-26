@@ -1,0 +1,248 @@
+/** CONTAINER **/
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+
+  @include respond-mediaQuery(ipad-pro) {
+    padding: 2rem;
+    width: 100%;
+  }
+}
+
+.container-secondary {
+  max-width: 129rem;
+  margin: 0 auto;
+
+  @include respond-mediaQuery(ipad-pro) {
+    padding: 2rem;
+    width: 100%;
+  }
+}
+
+/** RESET CSS **/
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+::selection {
+  background-color: $color-black-secondary;
+  color: $color-white-primary;
+}
+
+/** PADDING **/
+//padding top bottom
+.padding-tb-lg {
+  padding: 6rem 0 8rem;
+}
+
+/** MARGIN **/
+//margin top bottom
+.margin-tb-lg {
+  margin: 6rem 0;
+}
+
+.margin-b-md {
+  margin-bottom: 4rem;
+}
+
+/** HEADINGS **/
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.heading-primary {
+  font-size: 6.5rem;
+  letter-spacing: 1.5rem;
+}
+
+.heading-secondary {
+  font-size: 3.3rem;
+  margin-bottom: 2rem;
+  color: $color-secondary;
+}
+
+.heading-tertiary {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+/** PARAGRAPH **/
+.para-primary {
+  color: $color-secondary-light;
+  margin-bottom: 2rem;
+}
+
+/** SEPERATOR BOTTOM **/
+.seperator-primary {
+  height: 0.5rem;
+  width: 0.5rem;
+  @include border-radius-50percent;
+  background-color: $color-primary;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 6rem;
+
+  &::before,
+  &::after {
+    content: "";
+    height: 1px;
+    width: 5rem;
+    background-color: $color-secondary;
+    position: absolute;
+    top: 50%;
+    @include transform-y-minus50percent;
+  }
+
+  &::before {
+    left: -6rem;
+  }
+
+  &::after {
+    right: -6rem;
+  }
+}
+
+.seperator-secondary {
+  position: relative;
+  padding-bottom: 1.5rem;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 5rem;
+    height: 0.2rem;
+    background-color: $color-secondary;
+    left: 50%;
+    top: 100%;
+    @include transform-x-minus50percent;
+  }
+}
+
+.seperator-tertiary {
+  position: relative;
+  padding-bottom: 1.5rem;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 5rem;
+    height: 0.3rem;
+    background-color: $color-primary;
+    left: 50%;
+    top: 100%;
+    @include transform-x-minus50percent;
+    @include transition-delay-sm;
+  }
+}
+
+/** SEPERATOR LEFT, RIGHT, TOP **/
+.seperator-left {
+  border-left: 0.5rem solid $color-primary;
+  padding-left: 1.8rem;
+  line-height: 1;
+}
+
+.seperator-right {
+  border-right: 0.5rem solid $color-primary;
+  padding-right: 1.8rem;
+  line-height: 1;
+}
+
+.seperator-right-secondary {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: $color-secondary-light;
+    top: 0;
+    right: 0;
+    width: 0.1rem;
+    height: 100%;
+    z-index: 10;
+    @include rotate-tertiary;
+  }
+}
+
+.seperator-top {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 0.4rem;
+    width: 5rem;
+    background-color: $color-white-primary;
+    top: -2rem;
+    left: 0;
+  }
+}
+
+/** BUTTON **/
+.btn {
+  padding: 1.5rem 4.5rem;
+  font-size: 1.4rem;
+  color: $color-white-primary;
+  margin: 0 0.5rem;
+  text-transform: uppercase;
+  display: inline-block;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  cursor: pointer;
+  @include transition-delay-sm;
+  @include box-shadow--primary;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0.5rem;
+    @include transform-scale-y-sm;
+    transition: transform .2s, width .4s cubic-bezier(1, 0, 0, 1) .2s, background-color .1s;
+    -webkit-transition: transform .2s, width .4s cubic-bezier(1, 0, 0, 1) .2s, background-color .1s;
+    -moz-transition: transform .2s, width .4s cubic-bezier(1, 0, 0, 1) .2s, background-color .1s;
+    -ms-transition: transform .2s, width .4s cubic-bezier(1, 0, 0, 1) .2s, background-color .1s;
+    -o-transition: transform .2s, width .4s cubic-bezier(1, 0, 0, 1) .2s, background-color .1s;
+  }
+
+  &:hover::before {
+    @include transform-scale-y-md;
+    width: 100%;
+
+  }
+
+}
+
+.btn--primary {
+  background-color: $color-primary;
+
+  &::before {
+    background-color: $color-secondary;
+  }
+}
+
+.btn--secondary {
+  background-color: $color-secondary;
+
+  &::before {
+    background-color: $color-primary;
+  }
+}
+
+//TEXT ALIGN CENTER
+.text-center {
+  text-align: center;
+}

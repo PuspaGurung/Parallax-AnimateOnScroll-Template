@@ -1,0 +1,26 @@
+#about {
+
+  .about-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    .about-img {
+      margin: 0 6rem 4rem 0;
+      flex: 1;
+    }
+
+    .about-text {
+      flex: 1;
+      margin: 0 0 4rem;
+
+      &__para {
+        color: $color-secondary-light;
+        line-height: 2.5rem;
+        margin-bottom: 3rem;
+      }
+
+    }
+
+  }
+
+}
