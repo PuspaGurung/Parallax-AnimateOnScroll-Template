@@ -13,7 +13,7 @@
           padding: 0.5rem 1.5rem;
           color: $color-secondary-light;
           border: none;
-          background: inherit;
+          background: transparent;
           cursor: pointer;
           outline: none;
 
@@ -167,14 +167,22 @@
     .close-popup-box {
       position: absolute;
       z-index: 400;
-      font-size: 3rem;
+      font-size: 2.2rem;
       cursor: pointer;
       right: 3.1rem;
       top: 3.1rem;
+      background: $color-white-primary;
+      border: 1px solid $color-grey;
+      border-radius: 50%;
+      height: 5rem;
+      width: 5rem;
+      padding: 0.9rem;
+      outline: none;
+      @include box-shadow--primary;
 
 
       &:hover {
-        opacity: 0.85;
+        opacity: 0.75;
       }
     }
   }

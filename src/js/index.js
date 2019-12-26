@@ -93,7 +93,7 @@ for (let i = 0; i < getVisibleWorkGallery.length; i++) {
       "overlay-info--title"
     )[0].innerText;
     let galleryItemDetail = `<div class="selected-work">
-    <i class="close-popup-box fa fa-window-close"></i>
+    <button class="close-popup-box">X</button>
             <div class="selected-work__title">${getTitle}</div>
             <div class="selected-work__para">${getPara}</div>
             <div class="selected-work__image"><img src=${getImgPath} alt="${getTitle}"></div>

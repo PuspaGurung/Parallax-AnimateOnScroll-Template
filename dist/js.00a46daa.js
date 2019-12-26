@@ -189,7 +189,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\img\\banner\\banner1.jpg":[["banner1.e4462969.jpg","img/banner/banner1.jpg"],"img/banner/banner1.jpg"],"./..\\img\\service-bg.jpg":[["service-bg.9bf543dc.jpg","img/service-bg.jpg"],"img/service-bg.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/index.js":[function(require,module,exports) {
+},{"./..\\img\\banner\\banner1.jpg":[["banner1.e4462969.jpg","img/banner/banner1.jpg"],"img/banner/banner1.jpg"],"./..\\img\\service-bg.jpg":[["service-bg.9bf543dc.jpg","img/service-bg.jpg"],"img/service-bg.jpg"],"./..\\img\\case.jpg":[["case.65512320.jpg","img/case.jpg"],"img/case.jpg"],"./..\\img\\team\\bg-team.jpg":[["bg-team.c004f2f3.jpg","img/team/bg-team.jpg"],"img/team/bg-team.jpg"],"./..\\img\\status.jpg":[["status.28a00101.jpg","img/status.jpg"],"img/status.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 require("./../scss/main.scss");
@@ -278,7 +278,7 @@ var _loop2 = function _loop2(_i2) {
 
     var getTitle = getVisibleWorkGallery[_i2].getElementsByClassName("overlay-info--title")[0].innerText;
 
-    var galleryItemDetail = "<div class=\"selected-work\">\n    <i class=\"close-popup-box fa fa-window-close\"></i>\n            <div class=\"selected-work__title\">".concat(getTitle, "</div>\n            <div class=\"selected-work__para\">").concat(getPara, "</div>\n            <div class=\"selected-work__image\"><img src=").concat(getImgPath, " alt=\"").concat(getTitle, "\"></div>\n        </div>");
+    var galleryItemDetail = "<div class=\"selected-work\">\n    <button class=\"close-popup-box\">X</button>\n            <div class=\"selected-work__title\">".concat(getTitle, "</div>\n            <div class=\"selected-work__para\">").concat(getPara, "</div>\n            <div class=\"selected-work__image\"><img src=").concat(getImgPath, " alt=\"").concat(getTitle, "\"></div>\n        </div>");
     getPopupContainer.innerHTML = galleryItemDetail;
   });
 };

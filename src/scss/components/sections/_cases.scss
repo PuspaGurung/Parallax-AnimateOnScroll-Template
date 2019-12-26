@@ -1,0 +1,84 @@
+#cases {
+  background-color: $color-white-secondary;
+  padding-bottom: 10rem;
+
+  .cases__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: "";
+      background: url("../img/case.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 50%;
+      z-index: 5;
+    }
+
+    .case-box {
+      background-color: $color-white-primary;
+      @include box-shadow--primary;
+      width: 57%;
+      padding: 5rem;
+      position: relative;
+      z-index: 10;
+      margin: 4rem 0;
+
+      &:hover {
+        .case-item__icon::after {
+          @include rotate-zero;
+        }
+      }
+    }
+
+    .case-item {
+
+      &__icon {
+        height: 8rem;
+        width: 8rem;
+        position: relative;
+        display: inline-block;
+        margin-bottom: 5rem;
+
+        .fa {
+          position: absolute;
+          font-size: 3rem;
+          left: 50%;
+          top: 50%;
+          color: $color-white-primary;
+          z-index: 5;
+          @include transform-xy-minus50percent;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          background-color: $color-primary;
+          height: 100%;
+          width: 100%;
+          @include rotate-primary;
+          @include transition-delay-md;
+        }
+      }
+
+      &__title {
+        color: $color-secondary;
+      }
+
+      &__description {
+        color: $color-secondary-light;
+        line-height: 2.6rem;
+        margin-bottom: 4rem;
+      }
+    }
+  }
+
+}

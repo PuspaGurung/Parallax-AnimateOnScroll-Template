@@ -1,0 +1,120 @@
+#pricing {
+  background-color: $color-white-primary;
+
+  .pricing--wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 9rem;
+
+    .price-box {
+      display: flex;
+      flex-direction: column;
+      margin-right: 1rem;
+      flex: 1;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:hover {
+        .price::after {
+          @include transform-scale-xlg;
+          opacity: 0;
+        }
+
+        .price--amount {
+          color: $color-primary !important;
+        }
+      }
+
+      &__top {
+        min-height: 20rem;
+        background: $color-secondary-light;
+        width: 100%;
+        padding: 5rem 4.5rem 0 4.5rem;
+        @include transition-delay-md;
+      }
+
+      .premium-box--top {
+        background-color: $color-primary;
+      }
+
+      .premium-box--bottom {
+        .price--amount {
+          color: $color-primary !important;
+        }
+      }
+
+      .pricing-title {
+        color: $color-white-primary;
+        font-size: 2.3rem;
+        letter-spacing: 0.1cm;
+      }
+
+      &__bottom {
+        background: $color-white-secondary;
+        padding: 0 4.5rem 4.5rem 4.5rem;
+      }
+
+      .price {
+        background-color: $color-white-primary;
+        position: relative;
+        @include border-radius-50percent;
+        height: 13rem;
+        width: 13rem;
+        z-index: 10;
+        margin: 0 auto;
+        margin-top: -6.5rem;
+        margin-bottom: 5rem;
+
+        &::after {
+          background-color: $color-white-secondary;
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          opacity: 0.5;
+          @include border-radius-50percent;
+          @include transition-delay-md;
+        }
+
+        .amount-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          z-index: 5;
+          @include transform-xy-minus50percent;
+        }
+
+        .price--amount {
+          color: $color-secondary-light;
+          font-size: 2.6rem;
+          font-weight: bold;
+          display: block;
+        }
+
+        .price--period {
+          color: $color-secondary-light;
+          font-size: 1.2rem;
+          display: inline-block;
+        }
+      }
+
+      .price-box--description {
+        color: $color-secondary-light;
+        font-size: 1.4rem;
+        line-height: 4rem;
+        margin-bottom: 2.5rem;
+      }
+
+    }
+
+
+  }
+
+  //End price warpper
+}

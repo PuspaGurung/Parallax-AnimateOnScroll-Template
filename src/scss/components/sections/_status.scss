@@ -1,0 +1,64 @@
+#status {
+  background-image: linear-gradient(rgba($color-black-primary, 0.7),
+      rgba($color-black-primary, 0.7)),
+    url(./../img/status.jpg);
+  background-size: cover;
+  background-position: center top;
+  width: 100%;
+  min-height: 44rem;
+  position: relative;
+  z-index: 10;
+  background-attachment: fixed;
+
+  .status-content {
+    position: absolute;
+    z-index: 20;
+    @include transform-xy-minus50percent;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+  }
+
+  .status-box-wrapper {
+    display: flex;
+    justify-content: space-between;
+    color: $color-white-secondary;
+    padding: 4rem 0;
+
+    .status-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+
+      &__icon {
+        min-height: 8rem;
+        min-width: 8rem;
+        @include border-radius-50percent;
+        position: relative;
+        z-index: 10;
+        border: 1px solid $color-white-secondary;
+        padding: 2rem;
+        margin-bottom: 4rem;
+
+        .fa {
+          @include transform-xy-minus50percent;
+          color: $color-white-secondary;
+          position: absolute;
+          z-index: 20;
+          top: 50%;
+          left: 50%;
+          font-size: 2.5rem;
+        }
+      }
+
+      &__count {
+        margin-bottom: 0.5rem;
+      }
+
+      &__title {
+        color: $color-grey;
+      }
+    }
+  }
+}
