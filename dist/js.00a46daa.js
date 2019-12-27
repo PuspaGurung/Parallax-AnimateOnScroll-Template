@@ -382,10 +382,10 @@ for (var _i2 = 0; _i2 < getVisibleWorkGallery.length; _i2++) {
   _loop2(_i2);
 }
 
-; ////////////////// STATUS:: CountUp status number Animation ////////////////////
+; ////////////////// STATUS:: CountUp - Animate on display number  ////////////////////
 
 var createInterval = setInterval(function () {
-  var targetElement = document.querySelectorAll(".status-box .status-box__count"); // The status number to display
+  var targetElement = document.querySelectorAll(".status-box .status-box__count"); // Status number to display (static)
 
   var statusNumber = [5235, 25987, 895, 487, 3658];
 
@@ -418,7 +418,85 @@ function contrlDisplayTeam(incrementBy) {
   }
 }
 
-contrlDisplayTeam();
+contrlDisplayTeam(); //////////////////// PARALLAX EFFECT ///////////////////////
+
+var header = document.getElementById("header");
+var banner = document.getElementById("banner");
+var services = document.getElementById("services");
+var stats = document.getElementById("status");
+var teams = document.getElementById("teams");
+var footerTop = document.querySelector(".footer--top");
+window.addEventListener("scroll", function () {
+  var yOffset = window.pageYOffset;
+  var xOffset = window.pageXOffset; //section:: header
+
+  yOffset <= 500 ? header.className = header.className.replace("scroll-fixed", "") : yOffset >= 500 ? header.classList.add("scroll-fixed") : ""; // section :: banner
+
+  banner.style.backgroundPositionY = "".concat(-yOffset * 0.3, "px"); //section :: status
+
+  stats.style.backgroundPositionX = "".concat(-yOffset * 0.3, "px"); //section :: services
+
+  services.style.backgroundPositionY = "".concat(-yOffset * 0.1, "px"); //section :: teams
+
+  teams.style.backgroundPositionX = "".concat(yOffset * 0.5, "px");
+}); ////////////////////// SMOOTH NAVIGATION //////////////////////
+// Browser support for to requestAnimationFrame method
+
+var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.emRequestAnimationFrame || // for IE support
+function (callback) {
+  window.setTimeout(callback, 1000 / 60);
+};
+
+var navLinks = document.querySelectorAll(".navigation a");
+
+var _loop3 = function _loop3(_i5) {
+  navLinks[_i5].addEventListener("click", function (e) {
+    // active navigation link
+    var getActiveNavLink = document.querySelectorAll(".active-nav");
+    getActiveNavLink.length > 0 ? getActiveNavLink[0].className = getActiveNavLink[0].className.replace("active-nav", "") : "";
+
+    navLinks[_i5].classList.add("active-nav"); //Call smoothScroll function
+
+
+    smoothScroll(e);
+  });
+};
+
+for (var _i5 = 0; _i5 < navLinks.length; _i5++) {
+  _loop3(_i5);
+}
+
+function smoothScroll(e) {
+  e.preventDefault();
+  var currentId = e.currentTarget.getAttribute("href") == "#" ? "header" : e.currentTarget.getAttribute("href"); //return distance of current element relative to the top of the offsetParent node
+
+  var targetPosition = document.querySelector(currentId).offsetTop; // return the number of the pixels the document is currently scrolled along the vertical ais with a value of 0.0.
+
+  var startPosition = window.pageYOffset;
+  var distance = targetPosition - startPosition;
+  var durationTime = 1000;
+  var start = null;
+  requestAnimationFrame(step); //console.log(requestAnimationFrame(step))
+
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    var progress = timestamp - start; //window.scrollTo(0, distance * (progress / durationTime) + startPosition);
+
+    window.scrollTo(0, easeInOutCubic(progress, startPosition, distance, durationTime));
+    if (progress < durationTime) window.requestAnimationFrame(step);
+  }
+} // easing function
+
+/** cubic easing in/out - acceleration until halfway, then deceleration
+Source::http: //gizma.com/easing/  ***/
+
+
+function easeInOutCubic(t, b, c, d) {
+  t /= d / 2;
+  if (t < 1) return c / 2 * t * t * t + b;
+  t -= 2;
+  return c / 2 * (t * t * t + 2) + b;
+}
 },{"countup.js":"../node_modules/countup.js/dist/countUp.min.js","./../scss/main.scss":"scss/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

@@ -98,12 +98,12 @@ for (let i = 0; i < getVisibleWorkGallery.length; i++) {
 };
 
 
-////////////////// STATUS:: CountUp status number Animation ////////////////////
+////////////////// STATUS:: CountUp - Animate on display number  ////////////////////
 let createInterval = setInterval(() => {
   let targetElement = document.querySelectorAll(
     ".status-box .status-box__count"
   );
-  // The status number to display
+  // Status number to display (static)
   let statusNumber = [5235, 25987, 895, 487, 3658];
   for (let i = 0; i < targetElement.length; i++) {
     const countUp = new CountUp(targetElement[i], statusNumber[i]);
@@ -139,3 +139,105 @@ function contrlDisplayTeam(incrementBy) {
   }
 }
 contrlDisplayTeam();
+
+
+
+//////////////////// PARALLAX EFFECT ///////////////////////
+let header = document.getElementById("header");
+let banner = document.getElementById("banner");
+let services = document.getElementById("services");
+let stats = document.getElementById("status");
+let teams = document.getElementById("teams");
+let footerTop = document.querySelector(".footer--top");
+
+window.addEventListener("scroll", () => {
+  let yOffset = window.pageYOffset;
+  let xOffset = window.pageXOffset;
+
+  //section:: header
+  yOffset <= 500 ?
+    (header.className = header.className.replace("scroll-fixed", "")) :
+    yOffset >= 500 ?
+    header.classList.add("scroll-fixed") :
+    "";
+  // section :: banner
+  banner.style.backgroundPositionY = `${-yOffset * 0.3}px`;
+
+  //section :: status
+  stats.style.backgroundPositionX = `${-yOffset * 0.3}px`;
+
+  //section :: services
+  services.style.backgroundPositionY = `${-yOffset * 0.1}px`;
+
+  //section :: teams
+  teams.style.backgroundPositionX = `${yOffset * 0.5}px`;
+});
+
+
+////////////////////// SMOOTH NAVIGATION //////////////////////
+// Browser support for to requestAnimationFrame method
+let requestAnimationFrame =
+  window.requestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.emRequestAnimationFrame ||
+  // for IE support
+  function (callback) {
+    window.setTimeout(callback, 1000 / 60);
+  };
+let navLinks = document.querySelectorAll(".navigation a");
+for (let i = 0; i < navLinks.length; i++) {
+  navLinks[i].addEventListener("click", e => {
+    // active navigation link
+    let getActiveNavLink = document.querySelectorAll(".active-nav");
+    getActiveNavLink.length > 0 ?
+      (getActiveNavLink[0].className = getActiveNavLink[0].className.replace(
+        "active-nav",
+        ""
+      )) :
+      "";
+    navLinks[i].classList.add("active-nav");
+    //Call smoothScroll function
+    smoothScroll(e);
+  });
+}
+
+function smoothScroll(e) {
+  e.preventDefault();
+  let currentId =
+    e.currentTarget.getAttribute("href") == "#" ?
+    "header" :
+    e.currentTarget.getAttribute("href");
+
+  //return distance of current element relative to the top of the offsetParent node
+  let targetPosition = document.querySelector(currentId).offsetTop;
+
+  // return the number of the pixels the document is currently scrolled along the vertical ais with a value of 0.0.
+  let startPosition = window.pageYOffset;
+  let distance = targetPosition - startPosition;
+  let durationTime = 1000;
+  let start = null;
+  requestAnimationFrame(step);
+  //console.log(requestAnimationFrame(step))
+
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    let progress = timestamp - start;
+    //window.scrollTo(0, distance * (progress / durationTime) + startPosition);
+    window.scrollTo(
+      0,
+      easeInOutCubic(progress, startPosition, distance, durationTime)
+    );
+    if (progress < durationTime) window.requestAnimationFrame(step);
+  }
+}
+
+// easing function
+/** cubic easing in/out - acceleration until halfway, then deceleration
+Source::http: //gizma.com/easing/  ***/
+function easeInOutCubic(t, b, c, d) {
+  t /= d / 2;
+  if (t < 1) return (c / 2) * t * t * t + b;
+  t -= 2;
+  return (c / 2) * (t * t * t + 2) + b;
+}
