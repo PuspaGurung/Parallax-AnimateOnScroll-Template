@@ -26,4 +26,22 @@
       }
     }
   }
+
+  // FOR ANIMATION ON SCROLL
+  .client--wrapper {
+    .client:nth-child(even) {
+      @include AOS-fade-up-md;
+      @include AOS-transition-transformCubicBezier-md;
+    }
+
+    .client:nth-child(odd) {
+      @include AOS-fade-down-md;
+      @include AOS-transition-transformCubicBezier-md;
+    }
+
+    &.visible .client {
+      @include AOS-fade-stop;
+
+    }
+  }
 }

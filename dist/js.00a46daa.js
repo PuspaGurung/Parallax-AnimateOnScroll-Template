@@ -385,7 +385,7 @@ for (var _i2 = 0; _i2 < getVisibleWorkGallery.length; _i2++) {
 ; ////////////////// STATUS:: CountUp - Animate on display number  ////////////////////
 
 var createInterval = setInterval(function () {
-  var targetElement = document.querySelectorAll(".status-box .status-box__count"); // Status number to display (static)
+  var targetElement = document.querySelectorAll(".visible .status-box .status-box__count"); // Status number to display (static )
 
   var statusNumber = [5235, 25987, 895, 487, 3658];
 
@@ -497,6 +497,8 @@ function easeInOutCubic(t, b, c, d) {
   t -= 2;
   return c / 2 * (t * t * t + 2) + b;
 }
+
+;
 },{"countup.js":"../node_modules/countup.js/dist/countUp.min.js","./../scss/main.scss":"scss/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -525,7 +527,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52935" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55140" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

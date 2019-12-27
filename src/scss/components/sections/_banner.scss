@@ -79,5 +79,29 @@
     }
   }
 
+  // FOR ANIMATION ON-SCROLL
+  .banner-content {
+
+    .banner-content__heading,
+    .banner-content__para p {
+      @include AOS-transition-transformCubicBezier-md;
+    }
+
+    .banner-content__heading {
+      @include AOS-fade-left-md;
+    }
+
+    .banner-content__para p {
+      @include AOS-fade-right-md;
+    }
+
+    &.visible {
+
+      .banner-content__para p,
+      .banner-content__heading {
+        @include AOS-fade-stop;
+      }
+    }
+  }
 
 }

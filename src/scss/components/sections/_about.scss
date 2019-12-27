@@ -23,4 +23,25 @@
 
   }
 
+  // FOR ANIMATE ON SCROLL
+  .about-wrapper {
+
+    .about-img,
+    .about-text {
+      @include AOS-transition-transformCubicBezier-md;
+    }
+
+    .about-img {
+      @include AOS-fade-left-md;
+    }
+
+    .about-text {
+      @include AOS-fade-right-md;
+    }
+
+    &.visible .about-img,
+    &.visible .about-text {
+      @include AOS-fade-stop;
+    }
+  }
 }

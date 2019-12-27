@@ -81,4 +81,13 @@
     }
   }
 
+  // FOR ANIMATION ON-SCROLL
+  .cases__wrapper {
+    @include AOS-fade-up-md;
+    @include AOS-transition-transformCubicBezier-md;
+
+    &.visible {
+      @include AOS-fade-stop;
+    }
+  }
 }

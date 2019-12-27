@@ -101,9 +101,9 @@ for (let i = 0; i < getVisibleWorkGallery.length; i++) {
 ////////////////// STATUS:: CountUp - Animate on display number  ////////////////////
 let createInterval = setInterval(() => {
   let targetElement = document.querySelectorAll(
-    ".status-box .status-box__count"
+    ".visible .status-box .status-box__count"
   );
-  // Status number to display (static)
+  // Status number to display (static )
   let statusNumber = [5235, 25987, 895, 487, 3658];
   for (let i = 0; i < targetElement.length; i++) {
     const countUp = new CountUp(targetElement[i], statusNumber[i]);
@@ -240,4 +240,4 @@ function easeInOutCubic(t, b, c, d) {
   if (t < 1) return (c / 2) * t * t * t + b;
   t -= 2;
   return (c / 2) * (t * t * t + 2) + b;
-}
+};

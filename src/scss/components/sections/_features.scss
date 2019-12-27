@@ -72,4 +72,24 @@
       }
     }
   }
+
+  // FOR ANIMATION ON SCROLL
+  .features__wrapper {
+    .feature-box {
+      @include AOS-transition-transformCubicBezier-md;
+    }
+
+    .feature-box:nth-child(even) {
+      @include AOS-fade-up-md;
+    }
+
+    .feature-box:nth-child(odd) {
+      @include AOS-fade-down-md;
+    }
+
+    &.visible .feature-box {
+      @include AOS-fade-stop;
+
+    }
+  }
 }

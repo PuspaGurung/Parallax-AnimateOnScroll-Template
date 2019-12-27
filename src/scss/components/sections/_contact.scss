@@ -80,4 +80,24 @@
       z-index: 1;
     }
   }
+
+  // FOR ANIMATION ON-SCROLL
+  .contact--wrapper {
+    .contact-box {
+      @include AOS-transition-transformCubicBezier-md;
+    }
+
+    .contact-box:nth-child(odd) {
+      @include AOS-fade-left-md;
+    }
+
+    .contact-box:nth-child(even) {
+      @include AOS-fade-right-md;
+    }
+
+    &.visible .contact-box {
+      @include AOS-fade-stop;
+
+    }
+  }
 }

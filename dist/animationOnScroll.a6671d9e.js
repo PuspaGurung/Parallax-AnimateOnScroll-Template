@@ -117,79 +117,37 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"js/animationOnScroll.js":[function(require,module,exports) {
+////////////////////////// ANIMATION ELEMENTS ON SCROLL //////////////////////////
+// Browser support for to requestAnimationFrame method
+var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.emRequestAnimationFrame || // for IE support
+function (callback) {
+  window.setTimeout(callback, 1000 / 60);
+};
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
+var showOnScroll = document.querySelectorAll('.visible-on-scroll');
+
+function loopOnScroll() {
+  // showOnScroll.forEach(e => {
+  //   (isElementViewPort(e)) ? e.classList.add('visible'): e.classList.remove('visible');
+  // })
+  for (var i = 0; i < showOnScroll.length; i++) {
+    isElementViewPort(showOnScroll[i]) ? showOnScroll[i].classList.add('visible') : showOnScroll[i].classList.remove('visible');
   }
 
-  return bundleURL;
+  requestAnimationFrame(loopOnScroll);
 }
 
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+loopOnScroll();
 
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
+function isElementViewPort(e) {
+  //Get the size (height, and width (x)) of an element and its position relative to the viewport :Y
+  var rec = e.getBoundingClientRect();
+  return rec.top <= 0 && rec.bottom >= 0 || rec.bottom >= (window.innerHeight || document.documentElement.clientHeight) && rec.top <= (window.innerHeight || document.documentElement.clientHeight) || rec.top >= 0 && rec.bottom <= (window.innerHeight || document.documentElement.clientHeight);
 }
 
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"font/font-awesome.min.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"./..\\fonts\\fontawesome-webfont.eot":[["fontawesome-webfont.a16b4b15.eot","fonts/fontawesome-webfont.eot"],"fonts/fontawesome-webfont.eot"],"./..\\fonts\\fontawesome-webfont.woff2":[["fontawesome-webfont.328ae129.woff2","fonts/fontawesome-webfont.woff2"],"fonts/fontawesome-webfont.woff2"],"./..\\fonts\\fontawesome-webfont.woff":[["fontawesome-webfont.83d56cc7.woff","fonts/fontawesome-webfont.woff"],"fonts/fontawesome-webfont.woff"],"./..\\fonts\\fontawesome-webfont.ttf":[["fontawesome-webfont.c6670704.ttf","fonts/fontawesome-webfont.ttf"],"fonts/fontawesome-webfont.ttf"],"./..\\fonts\\fontawesome-webfont.svg":[["fontawesome-webfont.79dd36ce.svg","fonts/fontawesome-webfont.svg"],"fonts/fontawesome-webfont.svg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+;
+},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +351,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/font-awesome.min.7dfbb7f0.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/animationOnScroll.js"], null)
+//# sourceMappingURL=/animationOnScroll.a6671d9e.js.map

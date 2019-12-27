@@ -162,4 +162,14 @@
     }
   }
 
+  //FOR ANIMATION ON SCROLL 
+  .teams--wrapper {
+
+    @include AOS-fade-up-md;
+    @include AOS-transition-transformCubicBezier-md;
+
+    &.visible {
+      @include AOS-fade-stop;
+    }
+  }
 }

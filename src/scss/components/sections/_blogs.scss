@@ -102,5 +102,23 @@
     }
   }
 
+  // FOR ANIMATION ON SCROLL
+  .blogs--wrapper {
+    .blog-box {
+      @include AOS-transition-transformCubicBezier-md;
+    }
+
+    .blog-box:nth-child(even) {
+      @include AOS-fade-right-md;
+    }
+
+    .blog-box:nth-child(odd) {
+      @include AOS-fade-left-md;
+    }
+
+    &.visible .blog-box {
+      @include AOS-fade-stop;
+    }
+  }
 
 }

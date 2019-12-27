@@ -109,6 +109,17 @@
       }
     }
   }
+
+  // FOR ANIMATION ON-SCROLL
+  .recent-work--gallery {
+
+    @include AOS-fade-right-md;
+    @include AOS-transition-transformCubicBezier-md;
+
+    &.visible {
+      @include AOS-fade-stop;
+    }
+  }
 }
 
 // POPUP GALLERY 

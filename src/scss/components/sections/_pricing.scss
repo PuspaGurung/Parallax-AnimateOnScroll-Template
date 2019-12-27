@@ -113,6 +113,35 @@
 
     }
 
+    // FOR ANIMATE ON-SCROLL
+    .price-box {
+      @include AOS-transition-transformCubicBezier-md;
+    }
+
+    .price-box:nth-child(1) {
+      @include AOS-fade-left-md;
+
+      &.visible {
+        @include AOS-fade-stop;
+      }
+    }
+
+    .price-box:nth-child(2) {
+      @include AOS-fade-up-md;
+
+      &.visible {
+        @include AOS-fade-stop;
+      }
+    }
+
+    .price-box:nth-child(3) {
+      @include AOS-fade-right-md;
+
+      &.visible {
+        @include AOS-fade-stop;
+      }
+    }
+
 
   }
 

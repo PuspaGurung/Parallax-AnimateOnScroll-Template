@@ -87,4 +87,22 @@
       }
     }
   }
+
+  // FOR ANIMATION ON SCROLL
+  .services-container {
+    .service-box:nth-child(even) {
+      @include AOS-fade-left-md;
+      @include AOS-transition-transformCubicBezier-md;
+    }
+
+    .service-box:nth-child(odd) {
+      @include AOS-fade-right-md;
+      @include AOS-transition-transformCubicBezier-md;
+    }
+
+    &.visible .service-box {
+      @include AOS-fade-stop;
+
+    }
+  }
 }

@@ -65,5 +65,14 @@
     }
   }
 
+  // FOR ANIMATION ON-SCROLL
+  .footer-socialmedia {
+    @include AOS-fade-right-md;
+    @include AOS-transition-transformCubicBezier-md;
 
+    &.visible {
+      @include AOS-fade-stop;
+
+    }
+  }
 }
