@@ -283,7 +283,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\img\\banner\\banner1.jpg":[["banner1.e4462969.jpg","img/banner/banner1.jpg"],"img/banner/banner1.jpg"],"./..\\img\\service-bg.jpg":[["service-bg.9bf543dc.jpg","img/service-bg.jpg"],"img/service-bg.jpg"],"./..\\img\\case.jpg":[["case.65512320.jpg","img/case.jpg"],"img/case.jpg"],"./..\\img\\team\\bg-team.jpg":[["bg-team.c004f2f3.jpg","img/team/bg-team.jpg"],"img/team/bg-team.jpg"],"./..\\img\\status.jpg":[["status.28a00101.jpg","img/status.jpg"],"img/status.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/index.js":[function(require,module,exports) {
+},{"./..\\img\\banner\\banner1.jpg":[["banner1.e4462969.jpg","img/banner/banner1.jpg"],"img/banner/banner1.jpg"],"./..\\img\\service-bg.jpg":[["service-bg.9bf543dc.jpg","img/service-bg.jpg"],"img/service-bg.jpg"],"./..\\img\\case.jpg":[["case.65512320.jpg","img/case.jpg"],"img/case.jpg"],"./..\\img\\team\\bg-team.jpg":[["bg-team.c004f2f3.jpg","img/team/bg-team.jpg"],"img/team/bg-team.jpg"],"./..\\img\\status.jpg":[["status.28a00101.jpg","img/status.jpg"],"img/status.jpg"],"./..\\img\\footer\\footer-bg.jpg":[["footer-bg.9655a5eb.jpg","img/footer/footer-bg.jpg"],"img/footer/footer-bg.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 var _countup = require("countup.js");
@@ -447,7 +447,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62832" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52935" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

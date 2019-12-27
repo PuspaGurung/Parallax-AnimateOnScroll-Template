@@ -1,0 +1,83 @@
+#contact {
+  margin-bottom: 4rem;
+  background-color: $color-white-secondary;
+  overflow: hidden;
+
+  .heading-tertiary {
+    color: $color-primary;
+    margin-bottom: 1.7rem;
+  }
+
+  p {
+    color: $color-secondary-light;
+    margin-bottom: 3.5rem;
+  }
+
+  .contact--wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contact-box {
+    @include box-shadow--primary;
+    padding: 5rem;
+    background: $color-white-primary;
+    min-height: 40rem;
+  }
+
+  .contact-box--left {
+    flex: 1;
+    margin-right: 2.5rem;
+  }
+
+  .contact-box--right {
+    flex: 3;
+
+    .contact-form {
+
+      input,
+      textarea {
+        display: block;
+        width: 100%;
+        border: 0 0 0 1px solid;
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+        border: none;
+        border-bottom: 1px solid $color-secondary-light;
+        outline: none;
+        font-size: inherit;
+        font-family: inherit;
+        color: $color-secondary-light;
+        @include transition-delay-sm;
+
+        &:focus {
+          border-bottom: 1px solid $color-primary;
+        }
+
+        &::placeholder {
+          color: $color-secondary-light;
+        }
+
+        &:-ms-input-placeholder {
+          /* Internet Explorer 10-11 */
+          color: $color-secondary-light;
+        }
+
+        &::-ms-input-placeholder {
+          /* Microsoft Edge */
+          color: $color-secondary-light;
+        }
+      }
+
+      textarea {
+        min-height: 9rem;
+      }
+    }
+
+    .contact__btn {
+      background: $color-secondary;
+      z-index: 1;
+    }
+  }
+}
