@@ -150,17 +150,15 @@
   width: 100%;
   top: 0;
   left: 0;
-  background-color: rgba($color-white-secondary, 0.9);
-  //display: none;
+  background-color: rgba($color-white-secondary, 0.3);
+  backdrop-filter: blur(10px);
   @include AOS-scale-out-sm;
   @include transition-delay-sm;
   opacity: 0;
 
   &.visible-popup-box {
-    //display: block;
     @include AOS-scale-stop;
     opacity: 1;
-
   }
 
   .selected-work {

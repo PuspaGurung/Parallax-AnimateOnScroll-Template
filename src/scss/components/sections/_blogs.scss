@@ -16,8 +16,7 @@
       // on small screen device: screen width <= ipad width
       @include respond-mediaQuery(ipad) {
         width: 100%;
-        border-bottom: 0.3rem solid $color-black-secondary;
-
+        margin-bottom: 2rem;
         &:last-child {
           border-bottom: none;
         }
@@ -132,5 +131,4 @@
       @include AOS-fade-stop;
     }
   }
-
 }

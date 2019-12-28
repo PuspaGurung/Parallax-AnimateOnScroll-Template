@@ -9,27 +9,33 @@
   position: relative;
   z-index: 10;
   background-attachment: fixed;
-
-  .status-content {
-    position: absolute;
-    z-index: 20;
-    @include transform-xy-minus50percent;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .status-box-wrapper {
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-between;
     color: $color-white-secondary;
     padding: 4rem 0;
+
+    // On mobile screen
+    @include respond-mediaQuery(phone) {
+      justify-content: space-around;
+    }
 
     .status-box {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-bottom: 2rem;
+
+      // On mobile screen
+      @include respond-mediaQuery(phone) {
+        width: 45%;
+        margin-bottom: 2rem;
+      }
 
       &__icon {
         min-height: 8rem;

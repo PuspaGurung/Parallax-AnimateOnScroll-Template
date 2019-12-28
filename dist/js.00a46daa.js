@@ -426,6 +426,8 @@ var services = document.getElementById("services");
 var stats = document.getElementById("status");
 var teams = document.getElementById("teams");
 var footerTop = document.querySelector(".footer--top");
+var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+console.log(screenWidth);
 window.addEventListener("scroll", function () {
   var yOffset = window.pageYOffset;
   var xOffset = window.pageXOffset; //section:: header
@@ -436,7 +438,7 @@ window.addEventListener("scroll", function () {
 
   stats.style.backgroundPositionX = "".concat(-yOffset * 0.3, "px"); //section :: services
 
-  services.style.backgroundPositionY = "".concat(-yOffset * 0.1, "px"); //section :: teams
+  screenWidth >= 1500 ? services.style.backgroundPositionY = "".concat(-yOffset * 0.1, "px") : ""; //section :: teams
 
   teams.style.backgroundPositionX = "".concat(yOffset * 0.5, "px");
 }); ////////////////////// SMOOTH NAVIGATION //////////////////////
@@ -544,7 +546,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53931" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56179" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

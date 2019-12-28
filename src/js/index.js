@@ -149,6 +149,10 @@ let services = document.getElementById("services");
 let stats = document.getElementById("status");
 let teams = document.getElementById("teams");
 let footerTop = document.querySelector(".footer--top");
+var screenWidth = window.innerWidth ||
+  document.documentElement.clientWidth ||
+  document.body.clientWidth;
+console.log(screenWidth)
 
 window.addEventListener("scroll", () => {
   let yOffset = window.pageYOffset;
@@ -167,7 +171,7 @@ window.addEventListener("scroll", () => {
   stats.style.backgroundPositionX = `${-yOffset * 0.3}px`;
 
   //section :: services
-  services.style.backgroundPositionY = `${-yOffset * 0.1}px`;
+  (screenWidth >= 1500) ? services.style.backgroundPositionY = `${-yOffset * 0.1}px`: "";
 
   //section :: teams
   teams.style.backgroundPositionX = `${yOffset * 0.5}px`;

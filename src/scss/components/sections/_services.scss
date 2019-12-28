@@ -6,9 +6,20 @@
   width: 100%;
   background-attachment: fixed;
 
+  // on small screen width: screen width <=ipad-pro width
+  @include respond-mediaQuery(ipad-pro) {
+    background-image: linear-gradient(90deg, rgba($color-black-primary, 0.9) 0%, rgba($color-black-primary, 0.9) 100%, transparent 100%),
+      url(../img/service-bg.jpg);
+  }
+
   .services-container {
     width: 50%;
     text-align: right;
+
+    // on small screen width: screen width <=ipad-pro width
+    @include respond-mediaQuery(ipad-pro) {
+      width: 77%;
+    }
 
     .heading-secondary {
       color: $color-white-primary;
