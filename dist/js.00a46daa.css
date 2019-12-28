@@ -1197,7 +1197,7 @@ li {
   width: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(244, 245, 249, 0.3);
+  background-color: rgba(244, 245, 249, 0.5);
   backdrop-filter: blur(10px);
   opacity: 0;
   transform: scale(0);
@@ -1227,8 +1227,8 @@ li {
   left: 50%;
   top: 50%;
   width: 40%;
-  background-color: #fff;
   padding: 5rem;
+  background: #fff;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -1267,7 +1267,7 @@ li {
   right: 3.1rem;
   top: 3.1rem;
   background: #fff;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 50%;
   height: 5rem;
   width: 5rem;

@@ -150,11 +150,12 @@
   width: 100%;
   top: 0;
   left: 0;
-  background-color: rgba($color-white-secondary, 0.3);
+  background-color: rgba($color-white-secondary, 0.5);
   backdrop-filter: blur(10px);
   @include AOS-scale-out-sm;
   @include transition-delay-sm;
   opacity: 0;
+
 
   &.visible-popup-box {
     @include AOS-scale-stop;
@@ -167,10 +168,12 @@
     left: 50%;
     top: 50%;
     width: 40%;
-    background-color: $color-white-primary;
     padding: 5rem;
+    background: $color-white-primary;
     @include transform-xy-minus50percent;
     @include box-shadow--primary;
+
+
 
     // on small screen device: phone
     @include respond-mediaQuery(ipad-pro) {
@@ -206,7 +209,7 @@
       right: 3.1rem;
       top: 3.1rem;
       background: $color-white-primary;
-      border: 1px solid $color-grey;
+      border: none;
       border-radius: 50%;
       height: 5rem;
       width: 5rem;
