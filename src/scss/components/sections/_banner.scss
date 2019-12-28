@@ -31,11 +31,29 @@
     justify-content: space-between;
     @include transform-xy-minus50percent;
 
+    //Only on small screen devices 
+    @include respond-mediaQuery(ipad) {
+      width: 100%;
+      height: 50vh;
+      justify-content: space-around;
+    }
+
     &__slogan {
       font-size: 2.3rem;
     }
 
-    &__heading {}
+    &__btn {
+
+      //Only on small screen devices 
+      @include respond-mediaQuery(ipad) {
+        display: flex;
+        flex-flow: column;
+
+        a {
+          margin-bottom: 2.5rem;
+        }
+      }
+    }
 
     &__sperator {
       margin: 0 !important;
@@ -43,6 +61,7 @@
 
     &__para {
       margin-bottom: 2rem;
+      width: 100%;
 
       p {
         font-size: 1.5rem;
@@ -103,5 +122,4 @@
       }
     }
   }
-
 }

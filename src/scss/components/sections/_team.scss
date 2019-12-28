@@ -72,6 +72,7 @@
         z-index: 18;
         @include skew-x-poz-12deg;
 
+
         &::before {
           position: absolute;
           content: "";
@@ -128,6 +129,21 @@
           }
         }
       }
+
+      // on small screen device: screen width <= ipad width
+      @include respond-mediaQuery(ipad) {
+        width: 40%;
+        @include skew-none;
+
+        &__position,
+        &__name,
+        &__image,
+        &__contact {
+          @include skew-none;
+        }
+
+      }
+
     }
   }
 

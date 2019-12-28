@@ -1,22 +1,34 @@
-.scroll-fixed {
-  background: rgba($color-black-secondary, 0.93);
-  position: fixed !important;
-
-  .header-content {
-    padding: 1.5rem 0 !important;
-  }
-}
-
 #header {
   width: 100%;
   z-index: 100;
   position: absolute;
   @include transition-delay-sm;
 
+  &.scroll-fixed {
+    background: rgba($color-black-secondary, 0.93);
+    position: fixed !important;
+
+    .header-content {
+      padding: 1.5rem 0 !important;
+
+      @include respond-mediaQuery(ipad-pro) {
+        padding: 0 !important;
+      }
+    }
+  }
+
   .header-content {
     padding: 3.5rem 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    // For responsive
+    @include respond-mediaQuery(ipad-pro) {
+      position: relative;
+      z-index: 350;
+      padding: 0;
+    }
   }
 
   .logo {
@@ -42,6 +54,7 @@
         display: inline-block;
         overflow: hidden;
         font-size: 1.4rem;
+
         @include transition-delay-sm;
 
         &::after {
@@ -64,6 +77,149 @@
             left: 0;
           }
         }
+      }
+    }
+  }
+}
+
+// RESPONSIVE -SMALL SCREEN: screen width <= ipad-pro screen width
+//For responsive
+#header {
+  @include respond-mediaQuery(ipad-pro) {
+    position: fixed !important;
+    background: rgba($color-black-secondary, 0.93);
+
+    .navigation {
+      display: block;
+      position: absolute;
+      z-index: 400;
+      width: 100%;
+      right: 0;
+      padding: 1.5rem 0;
+      top: -100rem;
+      background: rgba($color-white-secondary, 0.96);
+      @include box-shadow--primary;
+      @include transition-delay-sm;
+
+      &.show-navigation {
+        top: 8rem;
+      }
+
+      &__list {
+        text-align: center;
+
+        a {
+          color: $color-black-secondary;
+          display: inline-block;
+          line-height: 6rem;
+          padding: 0 5rem;
+          font-size: 2rem;
+          background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-primary 50%);
+          background-size: 240%;
+          transition: all 0.4s;
+          -webkit-transition: all 0.4s;
+          -moz-transition: all 0.4s;
+          -ms-transition: all 0.4s;
+          -o-transition: all 0.4s;
+
+          &.active-nav {
+            background-color: $color-primary;
+            color: $color-white-secondary;
+          }
+
+          &:hover {
+            background-position: 100%;
+            color: $color-white-secondary;
+
+          }
+
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  // Navigation trigger button
+  #responsive-nav-trigger-btn {
+    display: none;
+    outline: none;
+    height: 6rem;
+    width: 6rem;
+    margin-right: 2.5rem;
+    border: none;
+    cursor: pointer;
+    background-color: $color-white-secondary;
+    @include border-radius-50percent;
+    @include box-shadow--primary;
+
+    @include respond-mediaQuery(ipad-pro) {
+      display: block;
+    }
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    @include respond-mediaQuery(ipad-pro) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      float: right;
+    }
+
+    .responsive-nav-icon {
+      display: inline-block;
+      width: 3rem;
+      height: 2px;
+      background-color: $color-black-secondary;
+      position: relative;
+      @include transition-delay-sm;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 3rem;
+        left: 0;
+        height: 2px;
+        display: inline-block;
+        background-color: $color-black-secondary;
+        @include transition-delay-sm;
+      }
+
+      &::before {
+        top: -0.9rem;
+      }
+
+      &::after {
+        bottom: -0.9rem;
+      }
+    }
+  }
+
+  // show this clicss when user click on #responsive-nav-trigger-btn
+  .active-trigger-btn {
+    .responsive-nav-icon {
+      background-color: transparent !important;
+
+      &::before {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        top: 0 !important;
+      }
+
+      &::after {
+        transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+        -moz-transform: rotate(-135deg);
+        -ms-transform: rotate(-135deg);
+        -o-transform: rotate(-135deg);
+        top: 0 !important;
       }
     }
   }

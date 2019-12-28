@@ -17,6 +17,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-flow: row wrap;
+
   }
 
   .contact-box {
@@ -24,6 +26,13 @@
     padding: 5rem;
     background: $color-white-primary;
     min-height: 40rem;
+
+    // on small screen device: screen width <= phone width
+    @include respond-mediaQuery(phone) {
+      width: 100%;
+      margin: 0 0 1rem 0 !important;
+      flex: none !important;
+    }
   }
 
   .contact-box--left {

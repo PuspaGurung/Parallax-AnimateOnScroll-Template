@@ -4,7 +4,7 @@
   margin: 0 auto;
 
   @include respond-mediaQuery(ipad-pro) {
-    padding: 2rem;
+    padding: 0 3rem;
     width: 100%;
   }
 }

@@ -9,13 +9,28 @@
     display: flex;
     justify-content: space-between;
     margin: 6rem 0;
+
+    // on small screen 
+    @include respond-mediaQuery(ipad-pro) {
+      justify-content: space-around;
+      flex-flow: row wrap;
+    }
   }
 
   .feature-box {
-    flex: 1;
     padding: 1.5rem;
     text-align: center;
     margin: 2rem 0;
+
+    // on ipad-pro, ipad screen 
+    @include respond-mediaQuery(ipad-pro) {
+      width: 36%;
+    }
+
+    // on mobile screen 
+    @include respond-mediaQuery(phone) {
+      width: 80%;
+    }
 
     &__logo {
       @include transition-delay-md;
@@ -45,8 +60,6 @@
         @include transform-xy-minus50percent;
       }
     }
-
-    &__heading {}
 
     &__para {
       color: $color-secondary-light;

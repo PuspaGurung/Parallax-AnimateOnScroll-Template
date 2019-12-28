@@ -16,6 +16,9 @@
           background: transparent;
           cursor: pointer;
           outline: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
           &:hover {
             color: $color-primary;
@@ -44,6 +47,8 @@
       overflow: hidden;
       cursor: pointer;
 
+
+
       height: 0;
       width: 0;
       @include AOS-scale-out-sm;
@@ -65,6 +70,21 @@
       @include AOS-scale-stop;
       width: 25%;
       height: auto;
+
+      // on small screen device: ipad
+      @include respond-mediaQuery(ipad) {
+        width: 40%;
+      }
+
+      // on small screen device: phone
+      @include respond-mediaQuery(phone) {
+        width: 40%;
+        height: 20rem;
+
+        .gallery-item__img img {
+          height: auto;
+        }
+      }
     }
 
     .gallery-item__img {
@@ -154,6 +174,11 @@
     @include transform-xy-minus50percent;
     @include box-shadow--primary;
 
+    // on small screen device: phone
+    @include respond-mediaQuery(ipad-pro) {
+      width: 90%;
+    }
+
     &__title {
       margin-bottom: 2.5rem;
       font-size: 2.3rem;
@@ -190,7 +215,6 @@
       padding: 0.9rem;
       outline: none;
       @include box-shadow--primary;
-
 
       &:hover {
         opacity: 0.75;

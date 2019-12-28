@@ -6,11 +6,19 @@
     justify-content: space-between;
     margin-bottom: 9rem;
 
+    // on small screen device: phone
+    @include respond-mediaQuery(phone) {
+      flex-direction: column;
+    }
+
     .price-box {
       display: flex;
       flex-direction: column;
       margin-right: 1rem;
       flex: 1;
+      margin-bottom: 3rem;
+
+
 
       &:last-child {
         margin-right: 0;
@@ -109,6 +117,16 @@
         font-size: 1.4rem;
         line-height: 4rem;
         margin-bottom: 2.5rem;
+
+        // on small screen device: width <=ipad-pro 
+        @include respond-mediaQuery(ipad-pro) {
+          height: 18rem;
+        }
+
+        // on small screen device: phone
+        @include respond-mediaQuery(phone) {
+          height: auto;
+        }
       }
 
     }

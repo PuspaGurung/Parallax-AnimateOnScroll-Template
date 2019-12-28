@@ -4,14 +4,37 @@
     display: flex;
     justify-content: space-between;
 
+    // on small screen
+    @include respond-mediaQuery(ipad) {
+      flex-flow: row wrap;
+      justify-content: center;
+    }
+
+    .about-img,
+    .about-text {
+      flex: 1;
+
+      @include respond-mediaQuery(ipad) {
+        flex: initial;
+      }
+    }
+
     .about-img {
       margin: 0 6rem 4rem 0;
-      flex: 1;
+
+      // on phone
+      @include respond-mediaQuery(phone) {
+        display: none;
+      }
     }
 
     .about-text {
-      flex: 1;
       margin: 0 0 4rem;
+
+      // on small screen
+      @include respond-mediaQuery(ipad) {
+        flex-flow: row wrap;
+      }
 
       &__para {
         color: $color-secondary-light;

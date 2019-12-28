@@ -18,16 +18,27 @@
       height: 100%;
       width: 50%;
       z-index: 5;
+
+      // on small screen device : phone
+      @include respond-mediaQuery(ipad) {
+        display: none;
+      }
     }
 
     .case-box {
       background-color: $color-white-primary;
-      @include box-shadow--primary;
       width: 57%;
       padding: 5rem;
       position: relative;
       z-index: 10;
       margin: 4rem 0;
+      @include box-shadow--primary;
+
+      // on small screen device : phone
+      @include respond-mediaQuery(ipad) {
+        margin: 0;
+        width: 100%;
+      }
 
       &:hover {
         .case-item__icon::after {

@@ -241,3 +241,21 @@ function easeInOutCubic(t, b, c, d) {
   t -= 2;
   return (c / 2) * (t * t * t + 2) + b;
 };
+
+////////////////////// RESPONSIVE HEADER NAV /////////////////////
+let getNavigation = document.querySelector('.navigation');
+let getResponsiveNavTriggerBtn = document.getElementById('responsive-nav-trigger-btn');
+getResponsiveNavTriggerBtn.addEventListener('click', () => {
+  getResponsiveNavTriggerBtn.classList.toggle('active-trigger-btn');
+  getNavigation.classList.toggle('show-navigation');
+
+  setTimeout(() => {
+    let getNavLink = document.querySelectorAll('.show-navigation li a');
+    for (let i = 0; i < getNavLink.length; i++) {
+      getNavLink[i].addEventListener('click', () => {
+        getNavigation.className = getNavigation.className.replace('show-navigation', "");
+        getResponsiveNavTriggerBtn.className = getResponsiveNavTriggerBtn.className.replace('active-trigger-btn', "");
+      })
+    }
+  }, 1000);
+});
