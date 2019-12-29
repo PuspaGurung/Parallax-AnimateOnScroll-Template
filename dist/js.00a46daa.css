@@ -1047,6 +1047,11 @@ li {
   flex: 1;
   justify-content: center;
 }
+#recent-work .recent-work--header .work-filter-nav__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #recent-work .recent-work--header .work-filter-nav__item .btn-filter {
   text-transform: uppercase;
   font-size: 1.4rem;
@@ -1056,9 +1061,11 @@ li {
   background: transparent;
   cursor: pointer;
   outline: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+@media (max-width: 65em) {
+  #recent-work .recent-work--header .work-filter-nav__item .btn-filter {
+    padding: 0.5rem 0.9rem;
+  }
 }
 #recent-work .recent-work--header .work-filter-nav__item .btn-filter:hover {
   color: #e74c3c;
@@ -1629,6 +1636,7 @@ li {
   display: none;
   width: 20%;
   margin: 0 1rem 2.5rem;
+  text-align: center;
   display: none;
   box-shadow: 0 0.1rem 0.5rem #000000;
   -webkit-box-shadow: 0 0.1rem 0.5rem #000000;

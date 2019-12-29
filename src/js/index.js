@@ -131,7 +131,7 @@ function contrlDisplayTeam(incrementBy) {
     incrementBy ?
     defaultTeamLength + incrementBy :
     defaultTeamLength;
-  // hide 'OTHER TEAM MEMBER' button if all teams are display
+  // hide 'OTHER TEAM MEMBER' button when all teams are display
   teamLength == allTeams.length ? (getTeamCtrolBtm.style.display = "none") : "";
   for (let i = 0; i < teamLength; i++) {
     // add class team-visible ( for display:flex;)

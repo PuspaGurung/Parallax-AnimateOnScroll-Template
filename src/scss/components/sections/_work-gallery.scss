@@ -7,6 +7,10 @@
       justify-content: center;
 
       &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         .btn-filter {
           text-transform: uppercase;
           font-size: 1.4rem;
@@ -16,9 +20,11 @@
           background: transparent;
           cursor: pointer;
           outline: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+
+          // on small screen device: phone
+          @include respond-mediaQuery(ipad-pro) {
+            padding: 0.5rem 0.9rem;
+          }
 
           &:hover {
             color: $color-primary;

@@ -408,7 +408,7 @@ getTeamCtrolBtm.addEventListener("click", function () {
 
 function contrlDisplayTeam(incrementBy) {
   var defaultTeamLength = 4;
-  var teamLength = defaultTeamLength + incrementBy > allTeams.length ? allTeams.length : incrementBy ? defaultTeamLength + incrementBy : defaultTeamLength; // hide 'OTHER TEAM MEMBER' button if all teams are display
+  var teamLength = defaultTeamLength + incrementBy > allTeams.length ? allTeams.length : incrementBy ? defaultTeamLength + incrementBy : defaultTeamLength; // hide 'OTHER TEAM MEMBER' button when all teams are display
 
   teamLength == allTeams.length ? getTeamCtrolBtm.style.display = "none" : "";
 
@@ -546,7 +546,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56179" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58169" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
